@@ -149,3 +149,31 @@ for i, country in enumerate(selected_countries):
             delta=growth,
             delta_color=delta_color
         )
+        import streamlit as st
+
+# Judul Aplikasi
+st.title("Aplikasi Kalkulator Sederhana")
+
+# Input Angka
+angka1 = st.number_input("Masukkan angka pertama", value=0.0)
+angka2 = st.number_input("Masukkan angka kedua", value=0.0)
+
+# Pilihan Operasi
+operasi = st.selectbox("Pilih operasi:", ["+", "-", "x", "/"])
+
+# Tombol Hitung
+if st.button("Hitung"):
+    if operasi == "+":
+        hasil = angka1 + angka2
+    elif operasi == "-":
+        hasil = angka1 - angka2
+    elif operasi == "x":
+        hasil = angka1 * angka2
+    elif operasi == "/":
+        if angka2 != 0:
+            hasil = angka1 / angka2
+        else:
+            hasil = "Error! Tidak bisa membagi dengan nol."
+            
+    # Menampilkan Hasil
+    st.success(f"Hasil: {hasil}")
